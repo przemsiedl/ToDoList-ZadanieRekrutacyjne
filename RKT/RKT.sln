@@ -3,7 +3,55 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.Model", "RKT.Model\RKT.Model.csproj", "{E04767E0-7AA6-41A8-9558-8C784D1405E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.Db", "RKT.Db\RKT.Db.csproj", "{8EE4D0C1-B751-484F-9AD8-3A76A5E74C9E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.Config", "RKT.Config\RKT.Config.csproj", "{57272563-579B-4C28-B715-0660D0465300}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.Dto", "RKT.Dto\RKT.Dto.csproj", "{161EDB2F-CB48-4B43-898E-0241C5247817}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.ZZTestApp", "RKT.ZZTestApp\RKT.ZZTestApp.csproj", "{DB7D2846-E5D1-4CA4-B011-39079E2D0531}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKT.Services", "RKT.Services\RKT.Services.csproj", "{B6D452D1-693D-41C8-86AA-3C5A453DF389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKT.Services.Interfaces", "RKT.Services.Interfaces\RKT.Services.Interfaces.csproj", "{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E04767E0-7AA6-41A8-9558-8C784D1405E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E04767E0-7AA6-41A8-9558-8C784D1405E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E04767E0-7AA6-41A8-9558-8C784D1405E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E04767E0-7AA6-41A8-9558-8C784D1405E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE4D0C1-B751-484F-9AD8-3A76A5E74C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE4D0C1-B751-484F-9AD8-3A76A5E74C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE4D0C1-B751-484F-9AD8-3A76A5E74C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE4D0C1-B751-484F-9AD8-3A76A5E74C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57272563-579B-4C28-B715-0660D0465300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57272563-579B-4C28-B715-0660D0465300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57272563-579B-4C28-B715-0660D0465300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57272563-579B-4C28-B715-0660D0465300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{161EDB2F-CB48-4B43-898E-0241C5247817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161EDB2F-CB48-4B43-898E-0241C5247817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161EDB2F-CB48-4B43-898E-0241C5247817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{161EDB2F-CB48-4B43-898E-0241C5247817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB7D2846-E5D1-4CA4-B011-39079E2D0531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB7D2846-E5D1-4CA4-B011-39079E2D0531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB7D2846-E5D1-4CA4-B011-39079E2D0531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB7D2846-E5D1-4CA4-B011-39079E2D0531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6D452D1-693D-41C8-86AA-3C5A453DF389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6D452D1-693D-41C8-86AA-3C5A453DF389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6D452D1-693D-41C8-86AA-3C5A453DF389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6D452D1-693D-41C8-86AA-3C5A453DF389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
