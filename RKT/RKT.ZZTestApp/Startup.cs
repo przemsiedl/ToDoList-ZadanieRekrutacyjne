@@ -13,7 +13,8 @@ namespace RKT.ZZTestApp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRktConfigurations(Configuration);
+            services.AddRktConfigurations();
+            services.AddRktDb();
         }
     }
 }

@@ -1,22 +1,14 @@
 ﻿using Microsoft.Extensions.Configuration;
-using RKT.Config;
+using Rkt.Config;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class IServiceCollectionExtension
     {
-        public static IServiceCollection AddRktConfigurations(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddRktConfigurations(this IServiceCollection services)
         {
-            services.AddSingleton(configuration);
-            services.AddSingleton(GetDbConfiguration(configuration));
+            services.AddSingleton(AppSettings.GetDbConfiguration());
             return services;
-        }
-
-        private static DbConfiguration GetDbConfiguration(IConfiguration configuration)
-        {
-            DbConfiguration dbConfiguration = new DbConfiguration();
-            configuration.GetSection(nameof(DbConfiguration)).Bind(dbConfiguration);
-            return dbConfiguration;
         }
     }
 }

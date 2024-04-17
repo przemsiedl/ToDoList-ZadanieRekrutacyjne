@@ -1,19 +1,22 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RKT.Config;
+using Rkt.Config;
+using RKT.Db;
 using RKT.ZZTestApp;
 
 Console.WriteLine("Zadanie rekrutacyjne. Aplikacja startowa.");
 
 var provider = BuildServices();
 
-var dbConfiguration = provider.GetService<DbConfiguration>();
+var factory = provider.GetService<IDbContextFactory>();
+var context = factory.NewContext();
 
-Console.WriteLine(dbConfiguration.ConnectionString);
+
+Console.WriteLine();
 
 IServiceProvider BuildServices()
 {
-    IConfiguration configuration = AppSettings.LoadConfiguration();
+    IConfiguration configuration = AppSettings.GetConfiguration();
 
     ServiceCollection serviceCollection = new ServiceCollection();
 
