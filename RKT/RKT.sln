@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.Dto", "RKT.Dto\RKT.Dto.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.ZZTestApp", "RKT.ZZTestApp\RKT.ZZTestApp.csproj", "{DB7D2846-E5D1-4CA4-B011-39079E2D0531}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKT.Services", "RKT.Services\RKT.Services.csproj", "{B6D452D1-693D-41C8-86AA-3C5A453DF389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.Services", "RKT.Services\RKT.Services.csproj", "{B6D452D1-693D-41C8-86AA-3C5A453DF389}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKT.Services.Interfaces", "RKT.Services.Interfaces\RKT.Services.Interfaces.csproj", "{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKT.Services.Interfaces", "RKT.Services.Interfaces\RKT.Services.Interfaces.csproj", "{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKT.Application", "RKT.Application\RKT.Application.csproj", "{A066C70E-29E7-4308-AA87-D22797113373}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F8BB54C-5103-41D1-85BE-1DA9C17F14BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A066C70E-29E7-4308-AA87-D22797113373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A066C70E-29E7-4308-AA87-D22797113373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A066C70E-29E7-4308-AA87-D22797113373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A066C70E-29E7-4308-AA87-D22797113373}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

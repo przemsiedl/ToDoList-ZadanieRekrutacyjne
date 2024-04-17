@@ -28,9 +28,14 @@ namespace RKT.Services
         {
             using (var dbContext = Factory.NewContext())
             {
-                return await dbContext.ToDoItems
-                    .Where(a => a.Date == day)
-                    .AsView()
+                IQueryable<ToDoItem> query = dbContext.ToDoItems;
+
+                if (day != null)
+                {
+                    query = query.Where(a => a.Date == day);
+                }
+
+                return await query.OrderBy(a => a.Date).AsView()
                     .ToListAsync();
             }
         }
@@ -67,7 +72,7 @@ namespace RKT.Services
             }
         }
 
-        public async void Remove(long id)
+        public async Task Remove(long id)
         {
             using (var dbContext = Factory.NewContext())
             {

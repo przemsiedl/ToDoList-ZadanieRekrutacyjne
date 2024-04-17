@@ -1,0 +1,26 @@
+﻿body {
+}
+
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.table {
+    display: inline-block;
+    width: 500px;
+}
+
+.edit {
+    display: inline-block;
+    width: 300px;
+}
+
+.topBar {
+    padding-left: 100px;
+    padding-bottom: 10px;
+}
+
+input[type="checkbox"][readonly] {
+    pointer-events: none;
+}
