@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RKT.Model;
 
 namespace RKT.Db
 {
@@ -11,5 +12,6 @@ namespace RKT.Db
         {
         }
 
+        public DbSet<ToDoItem> ToDoItems { get; set; }
     }
 }

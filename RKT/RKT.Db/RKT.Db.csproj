@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RKT.Config\RKT.Config.csproj" />
+    <ProjectReference Include="..\RKT.Model\RKT.Model.csproj" />
   </ItemGroup>
 
 </Project>
