@@ -1,0 +1,15 @@
+Proszę o odesłanie odpowiedzi w terminie do dnia 22.04.2024
+
+Zadanie polega na napisaniu aplikacji pt. "Todo List" (lista rzeczy do zrobienia) na podstawie poniższych założeń:
+- aplikacja typu web (ASP.NET) lub desktop (WPF) napisana w języku C#
+- aplikacja do składowania informacji powinna wykorzystywać bazę danych i korzystać z technik mapowania obiektowo-relacyjnego (ORM)
+- funkcjonalność aplikacji powinna obejmować:
+- dodawanie/usuwanie/edycję zadań dla określonego dnia
+- zmianę dnia dla którego wyświetlane są zadania
+- powiadomienia o zbliżających się zadaniach (zadanie opcjonalne, nie jest wymagane, może finalnie dodać trochę punktów w procesie rekrutacji)
+
+Jako rezultat chciałbym otrzymać źródła oraz gotową do użycia aplikację dla użytkownika końcowego, 
+z której praktycznie od razu mogę skorzystać, a także krótką instrukcję obsługi 
+(wyniki proszę załączyć do wiadomości e-mail z odpowiedzią lub podać link do repozytorium publicznego np. na gitlab.com, github.com.).
+
+Nadesłane rozwiązanie ma pomóc we wstępnej ocenie Pana aktualnych umiejętności programistycznych i będzie miało wpływ na to, czy zostanie Pan wyselekcjonowany do kolejnego etapu rekrutacji.”
