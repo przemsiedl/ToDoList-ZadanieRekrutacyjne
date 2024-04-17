@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RKT.Config\RKT.Config.csproj" />
     <ProjectReference Include="..\RKT.Db\RKT.Db.csproj" />
+    <ProjectReference Include="..\RKT.Services\RKT.Services.csproj" />
   </ItemGroup>
 
 </Project>

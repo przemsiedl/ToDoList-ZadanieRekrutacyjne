@@ -2,15 +2,14 @@
 using Microsoft.Extensions.DependencyInjection;
 using Rkt.Config;
 using RKT.Db;
+using RKT.Services.Interfaces;
 using RKT.ZZTestApp;
 
 Console.WriteLine("Zadanie rekrutacyjne. Aplikacja startowa.");
 
 var provider = BuildServices();
 
-var factory = provider.GetService<IDbContextFactory>();
-var context = factory.NewContext();
-
+var service = provider.GetService<IToDoItemService>();
 
 Console.WriteLine();
 

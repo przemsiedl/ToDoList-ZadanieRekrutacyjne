@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RKT.Db\RKT.Db.csproj" />
+    <ProjectReference Include="..\RKT.Services.Interfaces\RKT.Services.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>
