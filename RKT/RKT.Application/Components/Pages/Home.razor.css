@@ -1,6 +1,12 @@
-﻿body {
+﻿.topBar {
+    display:inline-block;
+    width: 500px;
+    padding-left: -300px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: skyblue;
+    text-align: center;
 }
-
 
 table, th, td {
     border: 1px solid black;
@@ -9,18 +15,61 @@ table, th, td {
 .table {
     display: inline-block;
     width: 500px;
+    background-color: powderblue;
 }
+
+.selection {
+    width: 20px;
+    text-align: center;
+}
+
+.title {
+    width: 210px;
+}
+
+.date {
+    width: 90px;
+}
+
+.priority {
+    text-align: center;
+    width: 90px;
+}
+
+.completed {
+    text-align: center;
+    width: 90px;
+}
+
+
 
 .edit {
     display: inline-block;
-    width: 300px;
+    width: 220px;
+    background-color: powderblue;
+    margin-left: 10px;
+    padding: 5px;
 }
 
-.topBar {
-    padding-left: 100px;
-    padding-bottom: 10px;
-}
+    .edit .title {
+        width: 100%;
+    }
 
-input[type="checkbox"][readonly] {
-    pointer-events: none;
-}
+    .edit label {
+        font-size: 15px;
+    }
+
+
+
+    .edit .date {
+        width: 100%;
+    }
+
+    .edit .buttons {
+        text-align: center;
+    }
+
+    .edit .buttonStl {
+        width: 200px;
+        margin-top: 10px;
+    }

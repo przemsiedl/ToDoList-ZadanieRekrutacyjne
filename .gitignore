@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 RKT/database.db
+/RKT/database.db-shm
+/RKT/database.db-wal

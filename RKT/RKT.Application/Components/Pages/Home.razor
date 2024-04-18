@@ -1,73 +1,76 @@
 ﻿@page "/"
+@using System.Text
 @rendermode InteractiveServer
 
-@inject IToDoItemService ToDoItemService;
+@inject IToDoItemService ToDoItemService
+@inject IJSRuntime JsRuntime
 
 
 <PageTitle>Todo List</PageTitle>
-<center>
+<div>
+    <div class="topBar">
+        <button @onclick=@AddNew type="button" class="btn btn-success">Add</button>
+        <button @onclick=@Delete type="button" class="btn btn-danger">Delete</button>
+        <button @onclick=@ShowAll type="button" class="btn btn-primary">Show All</button>
+        <InputDate @bind-Value=@ChoosedDate />
+    </div>
+    <div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Priority</th>
+                        <th>Completed</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-    <EditForm Model="@EditModel">
-        <div class="topBar">
-            <button @onclick=@AddNew type="button" class="btn btn-success">Add</button>
-            <button @onclick=@Delete type="button" class="btn btn-danger">Delete</button>
-            <button @onclick=@ShowAll type="button" class="btn btn-primary">Show All</button>
-            <InputDate @bind-Value=@ChoosedDate />
-        </div>
-        <div>
-            <div class="table">
-                <table>
-                    <thead>
+                    @foreach (var item in ToDoItems)
+                    {
                         <tr>
-                            <th></th>
-                            <th>Title</th>
-                            <th>Date</th>
-                            <th>Priority</th>
-                            <th>Completed</th>
+                            <td class="selection">
+                                @if (selectedId == item.Id)
+                                {
+                                    <input checked @onchange=@(() => OnSelectionChanged(item)) name="rrr" value="@item.Id" type="radio" />
+                                }
+                                else
+                                {
+                                    <input @onchange=@(() => OnSelectionChanged(item)) name="rrr" value="@item.Id" type="radio" />
+                                }
+                            </td>
+
+                            <td class="title">@item.Title</td>
+                            <td class="date">@item.Date.ToString("dd.MM.yyyy")</td>
+                            <td class="priority"><InputCheckbox @bind-Value=@item.Priority readonly /></td>
+                            <td class="completed"><InputCheckbox @bind-Value=@item.Completed readonly /></td>
                         </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach (var item in ToDoItems)
-                        {
-                            <tr>
-                                <td>
-                                    @if (selectedId == item.Id)
-                                    {
-                                        <input checked @onchange=@(() => OnSelectionChanged(item)) name="rrr" value="@item.Id" type="radio" />
-                                    }
-                                    else
-                                    {
-                                        <input @onchange=@(() => OnSelectionChanged(item)) name="rrr" value="@item.Id" type="radio" />
-                                    }
-                                </td>
-
-                                <td>@item.Title</td>
-                                <td>@item.Date</td>
-                                <td><InputCheckbox @bind-Value=@item.Priority readonly /></td>
-                                <td><InputCheckbox @bind-Value=@item.Completed readonly /></td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div class="edit">
-                <label>Title</label> <br />
-                <InputText @onfocusout=@Update @bind-Value=@EditModel.Title type="text" /> <br />
-
-                <label>Date</label><br />
-                <InputDate @onfocusout=@Update @bind-Value=@EditModel.Date /> <br />
-
-                <button @onclick=@TogglePriority type="button" class="btn btn-block btn-danger">Toggle Priority</button> <br />
-                <button @onclick=@ToggleCompleted type="button" class="btn btn-block btn-success">Toggle Completed</button>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
-
-    </EditForm>
-</center>
+        @if (EditModel != null)
+        {
+            <div class="edit">
+                <EditForm Model="@EditModel">
+                    <label class="title-label">Title</label> <br />
+                    <InputText class="title" @onfocusout=@Update @bind-Value=@EditModel.Title type="text" /> <br />
+                    <label class="date-label">Date</label><br />
+                    <InputDate class="date" @onfocusout=@Update @bind-Value=@EditModel.Date /> <br />
+                    <div class="buttons">
+                        <button @onclick=@TogglePriority type="button" class="buttonStl btn btn-block btn-danger">Toggle Priority</button> <br />
+                        <button @onclick=@ToggleCompleted type="button" class="buttonStl btn btn-block btn-success">Toggle Completed</button>
+                    </div>
+                </EditForm>
+            </div>
+        }
+    </div>
+</div>
 
 @code {
-    ToDoItemDto EditModel { get; set; } = new ToDoItemDto();
+    ToDoItemDto? EditModel { get; set; }
     List<ToDoItemDto> ToDoItems { get; set; } = new List<ToDoItemDto>();
 
     long? selectedId = null;
@@ -79,6 +82,8 @@
         set
         {
             _choosedValue = value;
+            EditModel = null;
+            selectedId = null;
             Refresh();
         }
     }
@@ -91,28 +96,52 @@
         }
         catch (Exception e)
         {
-
         }
     }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var itemsToday = await ToDoItemService.GetAll(DateTime.Now.Date);
+
+            if (itemsToday.Any())
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("You have today tasks to do!!! <br />");
+                foreach (var item in itemsToday)
+                {
+                    sb.AppendLine(item.Title + "<br />");
+                }
+                await JsRuntime.ToastrSuccess(sb.ToString());
+            }
+        }
+
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
 
     async Task AddNew()
     {
         try
         {
-            EditModel = await ToDoItemService.AddNew(new ToDoItemDto() { Title = "New Item", Date = DateTime.Now.Date });
+            var newRecord = await ToDoItemService.AddNew(new ToDoItemDto() { Title = "New Item !!!", Date = DateTime.Now.Date });
             ToDoItems = await ToDoItemService.GetAll(ChoosedDate);
-            selectedId = null;
+
+            OnSelectionChanged(ToDoItems.FirstOrDefault(a => a.Id == newRecord.Id));
+            await JsRuntime.ToastrSuccess("Created successfully!!!");
         }
         catch (Exception e)
         {
-
+            await JsRuntime.ToastrError(e.Message);
         }
     }
 
-    void OnSelectionChanged(ToDoItemDto toDoItem)
+    void OnSelectionChanged(ToDoItemDto? toDoItem)
     {
         EditModel = toDoItem;
-        selectedId = toDoItem.Id;
+        selectedId = toDoItem?.Id;
     }
 
     async void Refresh()
@@ -123,7 +152,7 @@
         }
         catch (Exception e)
         {
-
+            await JsRuntime.ToastrError(e.Message);
         }
     }
 
@@ -131,13 +160,22 @@
     {
         try
         {
+            if (EditModel is null)
+            {
+                await JsRuntime.ToastrError("Can't delete null model!!!");
+                return;
+            }
+
             await ToDoItemService.Remove(EditModel.Id);
             ToDoItems = await ToDoItemService.GetAll(ChoosedDate);
             selectedId = null;
+            EditModel = null;
+
+            await JsRuntime.ToastrSuccess("Deleted successfully!!!");
         }
         catch (Exception e)
         {
-
+            await JsRuntime.ToastrError(e.Message);
         }
     }
 
@@ -145,11 +183,18 @@
     {
         try
         {
+            if (EditModel is null)
+            {
+                await JsRuntime.ToastrError("Can't update null model!!!");
+                return;
+            }
+
             await ToDoItemService.Update(EditModel.Id, EditModel);
+            await JsRuntime.ToastrSuccess("Updated successfully!!!");
         }
         catch (Exception e)
         {
-
+            await JsRuntime.ToastrError(e.Message);
         }
     }
 
@@ -158,11 +203,13 @@
         try
         {
             ChoosedDate = null;
+            selectedId = null;
+            EditModel = null;
             ToDoItems = await ToDoItemService.GetAll(ChoosedDate);
         }
         catch (Exception e)
         {
-
+            await JsRuntime.ToastrError(e.Message);
         }
     }
 
@@ -170,12 +217,20 @@
     {
         try
         {
+            if (EditModel is null)
+            {
+                await JsRuntime.ToastrError("Select any task to Toggle!!!");
+                return;
+            }
+
             EditModel.Priority = !EditModel.Priority;
             await ToDoItemService.Update(EditModel.Id, EditModel);
+
+            await JsRuntime.ToastrSuccess("Toggled Priority successfully!!!");
         }
         catch (Exception e)
         {
-
+            await JsRuntime.ToastrError(e.Message);
         }
     }
 
@@ -183,13 +238,20 @@
     {
         try
         {
+            if (EditModel is null)
+            {
+                await JsRuntime.ToastrError("Select any task to Toggle!!!");
+                return;
+            }
+
             EditModel.Completed = !EditModel.Completed;
             await ToDoItemService.Update(EditModel.Id, EditModel);
+
+            await JsRuntime.ToastrSuccess("Toggled Completed successfully!!!");
         }
         catch (Exception e)
         {
-
+            await JsRuntime.ToastrError(e.Message);
         }
-
     }
 }
